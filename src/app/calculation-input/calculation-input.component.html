@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-6, col-md-6">
+    <h2></h2>
+    <form [formGroup]="calculationForm">
+      <div *ngFor="let input of inputs; let indexOfElement=index;">
+        <div class="form-group">
+          <label>{{input}}</label>
+          <input type="number" class="form-control input-field" id="input"
+                 formControlName="input{{indexOfElement}}" required>
+        </div>
+        <br>
+      </div>
+      <div>
+        <br>
+        <label class="bold-text">Ergebnis&nbsp;&nbsp;</label>
+        <label class="bold-text">{{calculationResult}}</label>
+      </div>
+      <br>
+      <button type="calculate" (click)="onSubmitClicked()" [disabled]="calculationForm.invalid">
+        Berechnen
+      </button>
+    </form>
+  </div>
+</div>
