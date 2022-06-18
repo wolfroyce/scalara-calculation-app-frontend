@@ -17,14 +17,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.calculationRuleService.getCalculationRules().subscribe(data => {
-      console.log(data);
       this.calculationRules = data;
     })
   }
 
   onButtonClicked(id: string) {
-    console.log(id);
-
     this.router.navigate(['/calculationInput/', {id: id}])
   }
 

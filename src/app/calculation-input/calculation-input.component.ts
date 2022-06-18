@@ -14,7 +14,6 @@ export class CalculationInputComponent implements OnInit {
   calculationResult: number;
   public inputs: string[] = [];
   variables: string[] = [];
-  calculationRuleName: string = '';
   id: string = '';
 
 
@@ -52,14 +51,15 @@ export class CalculationInputComponent implements OnInit {
     if (this.inputs.length > 1) {
       this.calculationRuleService
         .executeCalculationRuleWithTwoParameters(this.id, this.calculationForm.controls['input0'].value,
-        this.calculationForm.controls['input1'].value).subscribe(data => {
+          this.calculationForm.controls['input1'].value).subscribe(data => {
         this.calculationResult = data
       });
     } else {
       this.calculationRuleService
         .executeCalculationRuleWithOneParameter(this.id, this.calculationForm.controls['input0'].value)
-        .subscribe(data => { this.calculationResult = data
-      });
+        .subscribe(data => {
+          this.calculationResult = data
+        });
     }
   }
 }
